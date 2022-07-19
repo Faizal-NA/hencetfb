@@ -21,7 +21,6 @@ if my_music !=0:
 	play = rich.markdown.Markdown(catet_play, style='green')
 	rich.console.Console().print(play)
 	os.system('pkg install play-audio')
-	
 Mr = '\x1b[1;91m' 
 Hj = '\x1b[1;92m' 
 Mt = '\x1b[0m'
