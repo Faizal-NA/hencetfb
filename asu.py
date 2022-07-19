@@ -161,143 +161,53 @@ def bot():
 	except:
 		pass
 		
-# MENU PILIHAN INI AJG
-class Menu():
-	
-	def __init__(self,url):
-		self.url = url
-		
-	def tentang(self):
-		try:
-			kueh = romz_xyz(open("data/cookies","r").read().strip())
-		except IOError:
-			os.system("rm -rf data/cookies && rm -rf data/token && rm -rf data/my_info")
-			print ("%s%s cookie invalid "%(M,til));jeda(2)
-			os.system('python bff-2.py')
-		try:
-			tentang = json.loads(open("data/my_info","r").read().strip())
-		except FileNotFoundError:
-			#from data import informasi
-			(kueh, requests.get("https://mbasic.facebook.com/profile.php?v=info",cookies = kueh).text)
-			os.system('python bff-2.py')
-		try:
-			a = requests.get(f"{self.url}/profile.php", cookies = kueh).text
-		except requests.exceptions.ConnectionError:
-			exit('\n\n%s%s tidak ada koneksi%s\n'%(M,til,N))
-		if "mbasic_logout_button" not in a:
-			os.system("rm -rf data/cookies && rm -rf data/token && rm -rf data/my_info")
-			print ("%s%s cookie invalid "%(M,til));jeda(2)
-			os.system('python bff-2.py')
-		else:
-			banner()
-			print(f"{B} # {H}WhatsApp{M} : {K}08577727xxxx")
-			print(f"{B} # COOKIE{M} : YA\n")
-			print ('%s [%s01%s] %sCrack dari daftar teman '%(H,P,H,O))
-			print ('%s [%s02%s] %sCrack dari total pengikut'%(H,P,H,O))
-			print ('%s [%s03%s] %sCrack user instagram %spro'%(H,P,H,O,H))
-			print ('%s [%s04%s] %sLihat hasil crack'%(H,P,H,O))
-			print ('%s [%s05%s] %sCheckpoint detektor'%(H,P,H,O))
-			print ('%s [%srm%s] %sHapus data login'%(H,P,H,O))
-			print ('%s [%s00%s] %sKeluar %s(%slogout%s)'%(H,P,H,O,P,M,P))
-		
-class pilihan:
-	
-	def __init__(self):
-		self.kueh = romz_xyz(open("data/cookies","r").read().strip())
-		try:
-			self.token = open("data/token.txt","r").read()
-		except FileNotFoundError:
-			os.system("rm -rf data/cookies && rm -rf data/token && rm -rf data/my_info")
-			os.system('clear')
-			print ("%s%s cookie invalid "%(M,til));jeda(2)
-			os.system('python bff-2.py')
-		self.url = ("https://mbasic.facebook.com")
-		self.id = []
-				
-	def menu(self):
-		Menu(self.url).tentang()
-		slut = input('\n%s# %sPilih %s> %s'%(P,O,M,K))
-		if slut in['',' ']:
-			print ('\n%s%s isi yang benar'%(M,til));jeda(2)
-			self.menu()
-		elif slut in['1','01']:
-			gan = input ("\n%s%s%s ingin crack massal id? y/t%s >%s "%(U,til,O,M,K))
-			if gan in[""]:
-				print ('\n%s%s isi yang benar'%(M,til));jeda(2)
-			elif gan in['y','Y']:
-				try:
-					token = self.token
-					self.MassalGRAPH(token)
-				except KeyError:
-					exit('\n%s%s gagal mengambil id '%(M,til))
-			elif gan in['t','T']:
-				print ("\n%s%s %sPastikan daftar teman bersifat publik "%(U,til,O))
-				idt = input('%s%s %sUsername/Id%s > %s'%(U,til,O,M,K))
-				if idt in[""," "]:
-					print ('\n%s%s isi yang benar'%(M,til));jeda(2)
-				elif(re.findall("\w+",idt)):
-					r = requests.get("https://mbasic.facebook.com/"+idt).text
-					try:
-						user = re.findall('\;rid\=(\d+)\&',str(r))[0]
-					except:
-						user = idt
-					try:
-						print ('')
-						token = self.token
-						self.PublikGRAPH(user, token)
-					except KeyError:
-						exit('\n%s%s gagal mengambil id '%(M,til))
-		elif slut in['2','02']:
-			print ("\n%s%s %sPastikan target terdapat pengikut nya "%(U,til,O))
-			idt = input('%s%s %sUsername/Id%s > %s'%(U,til,O,M,K))
-			if idt in[""," "]:
-				print ('\n%s%s isi yang benar'%(M,til));jeda(2)
-			else:
-				data_ = (f"{self.url}/{idt}?v=followers")
-			try:
-				response = requests.get(data_, cookies=self.kueh).text
-				if "Anda Tidak Dapat Menggunakan Fitur Ini Sekarang" in response:
-					exit('\n%s%s akun terkena spam coba beberapa saat lagi'%(M,til))
-				elif "Halaman yang Anda minta tidak ditemukan." in response:
-					exit('\n%s%s Id tidak ditemukan '%(M,til))
-				elif "Konten Tidak Ditemukan" in response:
-					exit('\n%s%s Id tidak ditemukan '%(M,til))
-				else:
-					#print (f"{U}{til}{O} Nama akun {M}>{K} "+re.findall("\<title\>(.*?)<\/title\>",response)[0])
-					print ('')
-					self.FollowersPAR(data_)
-			except requests.exceptions.ConnectionError:
-				exit('\n\n%s%s tidak ada koneksi%s\n'%(M,til,N))
-		elif slut in['3','03']:
-			checkin()
-		elif slut in['4','04']:
-			print ("\n%s%s%s 01 %sCek hasil akun facebook "%(U,til,P,O))
-			print ("%s%s%s 02 %sCek hasil akun instagram "%(U,til,P,O))
-			print ("%s%s%s 03 %sHapus hasil crack "%(U,til,P,O))
-			print ("%s%s%s 00 %sKembali "%(U,til,M,O))
-			rom = input('\n%s# %sPilih %s> %s'%(P,O,M,K))
-			cek_cek(rom)
-		elif slut in['5','05']:
-			file_cp()
-		elif slut in['RM','Rm','rm']:
-			print ('\n%s%s menghapus data login dari termux '%(M,til));jeda(1)
-			try:
-				os.remove("data/cookies")
-				os.remove("data/token.txt")
-				os.remove("data/my_info")
-			except:
-				os.system("rm -rf data/cookie && rm -rf data/token && rm -rf data/my_info")
-			jalan('\n%s√ berhasil terhapus '%(H))
-			exit()
-		elif slut in['0','00']:
-			exit ('\n')
-		
-		if len(self.id)!=0:
-			print
-			return Crack().romiy(self.id)
-		#else:
-			#exit (f'{M}{til} gagal mengambil ID ')
-			
+#------------------[ BAGIAN-MENU ]----------------#
+def menu(my_name,my_id):
+	try:
+		token = open('.token.txt','r').read()
+		cok = open('.cok.txt','r').read()
+	except IOError:
+		print('[×] Cookies Kadaluarsa ')
+		time.sleep(5)
+		login_lagi334()
+	os.system('clear')
+	banner()
+	ip = requests.get("https://api.ipify.org").text
+	gh = 'github.com/MEMEK'
+	cetak(nel('\tSelamat Datang [yellow]%s[white] Ngentod'%(my_name)))
+	print(f'>> Your Idz : '+str(my_id))
+	print(f'>> Your Ip  : {ip}')
+	print(f'>> Github   : {gh}')
+	print('')
+	print('>> 1. Crack Publik ')
+	print('>> 2. Crack Follower ')
+	print('>> 3. Crack Grup   ')
+	print('>> 4. Crack File	')
+	print('>> 5. Hasil Crack  ')
+	print('>> 0. Keluar       ')
+	_____FAIZAL_____ = input('\n>> Pilih : ')
+	if _____FAIZAL_____ in ['1']:
+		dump_massal()
+	elif _____FAIZAL_____ in ['2']:
+		dump_follower()
+	elif _____FAIZAL_____ in ['3']:
+		grup()
+	elif _____FAIZAL_____ in ['4']:
+		crack_file()
+	elif _____FAIZAL_____ in ['5']:
+		result()
+	elif _____FAIZAL_____ in ['0']:
+		os.system('rm -rf .token.txt')
+		os.system('rm -rf .cookie.txt')
+		print('>> Sukses Logout+Hapus Kukis ')
+		exit()
+	else:
+		print('>> Pilih sing Bener Asu ')
+		back()
+def error():
+	print(f'{k}>> Maaf Fitur Ini Masih Di Perbaiki {x}')
+	time.sleep(4)
+	back()
 	# CRACK MASSAL
 	def MassalGRAPH(self, token):
 		try:
