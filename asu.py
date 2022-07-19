@@ -16,11 +16,6 @@ except ImportError:
 	mask = rich.markdown.Markdown(catet_mask, style='green')
 	rich.console.Console().print(mask)
 	os.system('pip install stdiomask')
-	
-	
-bff_2 = open(os.devnull, "w")
-my_music = subprocess.call(["dpkg","-s","play-audio"],stdout=bff_2,stderr=subprocess.STDOUT)
-bff_2.close()
 if my_music !=0:
 	catet_play = ('# • sedang menginstall play-audio •')
 	play = rich.markdown.Markdown(catet_play, style='green')
