@@ -2,9 +2,6 @@
 # coding by romi
 # Izin dlu lah bro kalau mau recode, gk ngotak njir _-
 # Note : jangan di ubah lagi! nanti error, script udah enak
-	soup = rich.markdown.Markdown(catet_bs, style='green')
-	rich.console.Console().print(soup)
-	os.system('pip install bs4')
 try:
 	import mechanize
 except ImportError:
