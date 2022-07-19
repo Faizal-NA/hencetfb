@@ -2,6 +2,47 @@
 # coding by romi
 # Izin dlu lah bro kalau mau recode, gk ngotak njir _-
 # Note : jangan di ubah lagi! nanti error, script udah enak
+	soup = rich.markdown.Markdown(catet_bs, style='green')
+	rich.console.Console().print(soup)
+	os.system('pip install bs4')
+try:
+	import mechanize
+except ImportError:
+	catet_mek = ('# • sedang menginstall modul mechanize •')
+	meka = rich.markdown.Markdown(catet_mek, style='green')
+	rich.console.Console().print(meka)
+	os.system('pip install mechanize')
+try:
+	import stdiomask
+except ImportError:
+	catet_mask = ('# • sedang menginstall modul stdiomask •')
+	mask = rich.markdown.Markdown(catet_mask, style='green')
+	rich.console.Console().print(mask)
+	os.system('pip install stdiomask')
+	
+	
+bff_2 = open(os.devnull, "w")
+my_music = subprocess.call(["dpkg","-s","play-audio"],stdout=bff_2,stderr=subprocess.STDOUT)
+bff_2.close()
+if my_music !=0:
+	catet_play = ('# • sedang menginstall play-audio •')
+	play = rich.markdown.Markdown(catet_play, style='green')
+	rich.console.Console().print(play)
+	os.system('pkg install play-audio')
+	
+Mr = '\x1b[1;91m' 
+Hj = '\x1b[1;92m' 
+Mt = '\x1b[0m'
+
+# MODULE
+import requests, shutil, os, re, bs4, sys, json, time, platform ,random, datetime, subprocess, logging, base64
+import hmac, hashlib, urllib, stdiomask, urllib.request, uuid
+from concurrent.futures import ThreadPoolExecutor
+from bs4 import BeautifulSoup as parser
+from threading import (Thread, Event)
+from time import sleep as jeda
+from datetime import datetime
+
 
 import os, sys, subprocess, platform
 try:
