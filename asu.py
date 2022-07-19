@@ -608,10 +608,10 @@ def setting():
 	elif hc in ['']:
 		print('>> Pilih Sing Bener Koplok ')
 		setting()
-#	elif hc in ['2','02']:
-#		method.append('free')
-#	elif hc in ['3','03']:
-#		method.append('touch')
+	elif hc in ['2','02']:
+		method.append('free')
+	elif hc in ['3','03']:
+		method.append('touch')
 	elif hc in ['4','04']:
 		method.append('mbasic')
 	else:
@@ -648,7 +648,7 @@ def passwrd():
 			idf,nmf = yuzong.split('|')[0],yuzong.split('|')[1].lower()
 			frs = nmf.split(' ')[0]
 			pwv = []
-			if len(nmf)<6:
+			if len(frs)<6:
 				if len(frs)<3:
 					pass
 				else:
@@ -659,21 +659,37 @@ def passwrd():
 					pwv.append(frs+'1234567')
 					pwv.append(frs+'12345678')
 					pwv.append(frs+'123456789')
-			else:
-				if len(frs)<3:
-					pwv.append(nmf)
+			         else:
+				if len(frs+nmf)<3:
+					pwv.append(frs+nmf)
 					pwv.append(frs+nmf+'123')
 					pwv.append(frs+nmf+'1234')
 					pwv.append(frs+nmf+'12345')
 					pwv.append(frs+nmf+'123456')
+					pwv.append(frs+nmf+'12345678')
+					pwv.append(frs+nmf+'123456789')
+					pwv.append(frs+nmf+'1234567890')
 
 
 
 				else:
 					pwv.append(nmf)
+					pwv.append('123456')
+					pwv.append('1234567')
+					pwv.append('12345678')
+					pwv.append('123456789')
+					pwv.append('1234567890')
+					
+					
+				else:
+					pwv.append(nmf)
 					pwv.append(frs+'123')
 					pwv.append(frs+'1234')
 					pwv.append(frs+'12345')
+					pwv.append(frs+'123456')
+					pwv.append(frs+'1234567')
+					pwv.append(frs+'12345678')
+					pwv.append(frs+'1234567890')
 			if 'ya' in pwpluss:
 				for xpwd in pwnya:
 					pwv.append(xpwd)
