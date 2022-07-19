@@ -1049,9 +1049,6 @@ def hasil_igehh():
 #════════════════════════════════------#
 #---{ CRACK INSTAGRAM }---#
 #════════════════════════════════-----#
-day=datetime.now().strftime("%d-%b-%Y")
-nyMnD = 5
-nyMxD = 10
 
 insta_log='https://www.instagram.com/accounts/login/?force_classic_login=&'
 url='https://www.instagram.com'
