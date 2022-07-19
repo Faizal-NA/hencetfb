@@ -660,6 +660,7 @@ def passwrd():
 					pwv.append(frs+'12345678')
 					pwv.append(frs+'123456789')
 			         else:
+					
 				if len(frs+nmf)<3:
 					pwv.append(frs+nmf)
 					pwv.append(frs+nmf+'123')
