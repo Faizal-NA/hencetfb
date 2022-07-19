@@ -1065,10 +1065,9 @@ s=requests.Session()
 
 try:
     # python 2
-	urllib_quote_plus = urllib.quote
+	
 except:
     # python 3
-	urllib_quote_plus = urllib.parse.quote_plus
 
 def cekAPI(cookie):
 	user=open('.username','r').read()
