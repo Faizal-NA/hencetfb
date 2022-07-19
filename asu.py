@@ -410,7 +410,7 @@ class pilihan:
 			pass
 			
 # USER AGENT
-pretty.install()
+
 CON=sol()
 ugen2=[]
 ugen=[]
