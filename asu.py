@@ -1063,12 +1063,6 @@ loop=0
 following=[]
 s=requests.Session()
 
-try:
-    # python 2
-	
-except:
-    # python 3
-
 def cekAPI(cookie):
 	user=open('.username','r').read()
 	try:
