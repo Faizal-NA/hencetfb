@@ -84,38 +84,6 @@ def folder():
 	try:os.mkdir('data')
 	except:pass
 
-# LOGO (LO GOBLOK)
-dt = requests.get("http://ip-api.com/json/").json()
-try:
-	IP = dt["query"]
-	CN = dt["as"]
-except KeyError:
-	IP = " "
-	CN = " \n"
-
-#menu owner
-print ('═════════════════════════ ')
-author = 'sc by faizal N.A'
-fb_me = 'Faizal Noor Arifin'
-whatsap = 'https://github.com/faizal-na'
-print ('════════════════════════ ')
-
-def banner():
-	os.system('clear')
-	logo = (f'# • Author : {author} •')
-	play = rich.markdown.Markdown(logo, style='green')
-	rich.console.Console().print(play)
-	print (' %s%s%s%s%s%s                                      %s%s%s%s%s%s\n%s   _______  ______ _______ _______ _     _\n   |       |_____/ |_____| |       |____/ \n%s   |_____  |    \\_ |     | |_____  |    \\_\n\n %s%s%s%s%s%s                                      %s%s%s%s%s%s \n %s# %sFb  %s : %s%s \n %s# %sGit%s  : %s%s \n %s# %s════════════════════════════════ %s#  '%
-	(M,til,K,til,H,til,M,til,K,til,H,til,M,P,M,til,K,til,H,til,M,til,K,til,H,til,U,O,M,O,fb_me,U,O,M,O,whatsap,P,M,P))
-	print (' %s#%s IP   %s:%s %s %s- %s%s '%(U,O,M,O,IP,H,O,CN))
-    
-# CONVERT COOKIE DICT TO STRING
-def romz_xyz(cookie,venom={}):
-	for x in cookie.replace(' ','').strip().split(';'):
-		kuki = x.split('=')
-		if len(kuki) > 1:
-			venom.update({kuki[0]: kuki[1]})
-	return venom
 
 #MENU MASUK
 def login():
