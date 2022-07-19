@@ -410,7 +410,7 @@ class pilihan:
 			pass
 			
 # USER AGENT
-
+pretty.install()
 CON=sol()
 ugen2=[]
 ugen=[]
@@ -424,12 +424,12 @@ except Exception as e:
 	print('[[\x1b[1;92m•\x1b[1;97m] [\x1b[1;96mAlvino_adijaya_xy')
 prox=open('.prox.txt','r').read().splitlines()
 for xd in range(10000):
-	a='Mozilla/5.0 (Symbian/3; Series60/'
+	a='Mozilla/5.0 (Linux; Android 10; Redmi 01A Build/01AQKQ1.191014.001; wv)'
 	b=random.randrange(1, 9)
 	c=random.randrange(1, 9)
 	d='Nokia'
 	e=random.randrange(100, 9999)
-	f='/110.021.0028; Profile/MIDP-2.1 Configuration/CLDC-1.1 ) AppleWebKit/535.1 (KHTML, like Gecko) NokiaBrowser/'
+	f='AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/83.0.4103.101 Mobile Safari/537.36'
 	g=random.randrange(1, 9)
 	h=random.randrange(1, 4)
 	i=random.randrange(1, 4)
@@ -439,7 +439,7 @@ for xd in range(10000):
 	ugen2.append(uaku)
 
 
-	aa='Mozilla/5.0 (Linux; U; Android'
+	aa='Mozilla/5.0 (Linux; Android 10; Redmi 01A Build/01AQKQ1.191014.001; wv)'
 	b=random.choice(['6','7','8','9','10','11','12'])
 	c=' en-us; GT-'
 	d=random.choice(['A','B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'])
@@ -454,7 +454,7 @@ for xd in range(10000):
 	uaku2=f'{aa} {b}; {c}{d}{e}{f}) {g}{h}.{i}.{j}.{k} {l}'
 	ugen.append(uaku2)
 for x in range(10):
-	a='Mozilla/5.0 (SAMSUNG; SAMSUNG-GT-S'
+	a='Mozilla/5.0 (Linux; Android 10; Redmi 01A Build/01AQKQ1.191014.001; wv)'
 	b=random.randrange(100, 9999)
 	c=random.randrange(100, 9999)
 	d=random.choice(['A','B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'])
@@ -469,16 +469,16 @@ for x in range(10):
 	uak=f'{a}{b}/{c}{d}{e}{f}{g}{h}{i}{j}.{k} {l}'
 def uaku():
 	try:
-		ua=open('bbnew.txt','r').read().splitlines()
+		ua=open('ua.txt','r').read().splitlines()
 		for ub in ua:
 			ugen.append(ub)
 	except:
-		a=requests.get('https://github.com/EC-1709/a/blob/main/bbnew.txt').text
-		ua=open('.bbnew.txt','w')
+		a=requests.get('https://github.com/Faizal-NA/bam/blob/main/ua.txt').text
+		ua=open('.ua.txt','w')
 		aa=re.findall('line">(.*?)<',str(a))
 		for un in aa:
 			ua.write(un+'\n')
-		ua=open('.bbnew.txt','r').read().splitlines()
+		ua=open('.ua.txt','r').read().splitlines()
 		
 # MULAI CRACK 
 pwx = []
