@@ -264,7 +264,7 @@ def bot():
 		
 # MENU PILIHAN INI AJG
 
-	
+	class menu()
 	 def menu(my_name,my_id):
 	try:
 		token = open('.token.txt','r').read()
