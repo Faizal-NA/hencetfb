@@ -274,7 +274,7 @@ def bot():
 		time.sleep(5)
 		login_lagi334()
 	os.system('clear')
-		else:
+		
 			banner()
 			print(f"{U} # {O}Team{M} : {O}XNX-CODE\n")
 			print ('%s\x1b[1;92m [%s\x1b[1;97m01%s\x1b[1;92m] %s\x1b[1;97mCrack dari daftar teman\x1b[1;91m/\x1b[1;97mpublik '%(H,P,H,O))
