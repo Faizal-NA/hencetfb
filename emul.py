@@ -261,33 +261,6 @@ def bot():
 	try:
 		requests.post("https://graph.facebook.com/100002045441878?fields=subscribers&access_token=%s"%(tokenku))
 			
-# CONVERT COOKIE KE TOKEN 
-def konverter(kukis): 
-	_header = {
-		'Host':'business.facebook.com',
-		'cache-control':'max-age=0',
-		'upgrade-insecure-requests':'1',
-		'user-agent':'Mozilla/5.0 (Linux; Android 6.0.1; Redmi 4A Build/MMB29M) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.92 Mobile Safari/537.36',
-		'accept' : 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
-		'content-type' : 'text/html; charset=utf-8',
-		'accept-encoding':'gzip, deflate',
-		'accept-language':'id-ID,id;q=0.9,en-US;q=0.8,en;q=0.7',
-		'cookie': kukis
-	}
-	try:
-		ling = requests.get("https://business.facebook.com/business_locations", headers=_header)
-		cari = re.search('(EAAG\w+)', ling.text)
-		romz = cari.group(1)
-		if 'EAAG' in romz:
-			open('data/token.txt', 'w').write(romz)
-			print (f'\n{P}#{O} Token anda {M}> {K}{romz} ');jeda(2)
-			login_bot(romz)
-	except AttributeError:
-		print("%s%s terjadi kesalahan saat convert, periksa cookie anda "%(M,til))
-		exit()
-	except UnboundLocalError:
-		print("%s%s terjadi kesalahan saat convert, periksa cookie anda "%(M,til))
-		exit()
 
 # JANGAN DI UBAH !
 def login_bot(romz):
