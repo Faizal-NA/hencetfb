@@ -263,7 +263,7 @@ def bot():
 			
 		
 # MENU PILIHAN INI AJG
-class Menu():
+
 	
 	 def __init__(self,url):
 		self.url = url
