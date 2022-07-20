@@ -265,10 +265,10 @@ def bot():
 # MENU PILIHAN INI AJG
 class Menu():
 	
-	def __init__(self,url):
+	 def __init__(self,url):
 		self.url = url
 		
-	def tentang(self):
+ def tentang(self):
 		try:
 			kueh = romz_xyz(open("data/cookies","r").read().strip())
 		except IOError:
