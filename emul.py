@@ -265,30 +265,15 @@ def bot():
 # MENU PILIHAN INI AJG
 
 	
-	 def __init__(self,url):
-		self.url = url
-		
- def tentang(self):
-		try:
-			kueh = romz_xyz(open("data/cookies","r").read().strip())
-		except IOError:
-			os.system("rm -rf data/cookies && rm -rf data/token && rm -rf data/my_info")
-			print ("%s%s cookie invalid "%(M,til));jeda(2)
-			os.system('python emul.py')
-		try:
-			tentang = json.loads(open("data/my_info","r").read().strip())
-		except FileNotFoundError:
-			#from data import informasi
-			(kueh, requests.get("https://mbasic.facebook.com/profile.php?v=info",cookies = kueh).text)
-			os.system('python emul.py')
-		try:
-			a = requests.get(f"{self.url}/profile.php", cookies = kueh).text
-		except requests.exceptions.ConnectionError:
-			exit('\n\n%s%s tidak ada koneksi%s\n'%(M,til,N))
-		if "mbasic_logout_button" not in a:
-			os.system("rm -rf data/cookies && rm -rf data/token && rm -rf data/my_info")
-			print ("%s%s cookie invalid "%(M,til));jeda(2)
-			os.system('python emul.py')
+	 def menu(my_name,my_id):
+	try:
+		token = open('.token.txt','r').read()
+		cok = open('.cok.txt','r').read()
+	except IOError:
+		print('[×] Cookies Kadaluarsa ')
+		time.sleep(5)
+		login_lagi334()
+	os.system('clear')
 		else:
 			banner()
 			print(f"{U} # {O}Team{M} : {O}XNX-CODE\n")
