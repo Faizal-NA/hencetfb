@@ -166,7 +166,7 @@ def Masuk():
 		lis = open ("data/lisensi.txt","r").read()
 	except (KeyError,IOError):
 		os.system("clear")
-		print ("%s× Lisensi kadaluarsa"%(M));jeda(2)
+		print ("%s× please wait"%(M));jeda(2)
 		os.system("rm -rf data/lisensi.txt")
 		
 	try:
